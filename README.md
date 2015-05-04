@@ -18,3 +18,11 @@ Any command wrapped with `iron` will see the environment variables.
 $ iron env
 FOO=bar
 ```
+
+## Changelog
+
+### 0.0.1
+
+* Initial version. Contains basic support for wrapping commands and populating
+  the environment by recursively reading the directory structure upwards and
+  looking for .envrc files.
