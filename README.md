@@ -2,6 +2,7 @@ Ironment
 ========
 
 [![Build Status](https://travis-ci.org/badeball/ironment.svg)](https://travis-ci.org/badeball/ironment)
+[![Code Climate](https://codeclimate.com/github/badeball/ironment/badges/gpa.svg)](https://codeclimate.com/github/badeball/ironment)
 
 Ironment is a simple command line utility for populating the environment of a
 command by reading particular environment files and then exec-ing. Such
