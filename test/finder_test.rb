@@ -2,6 +2,14 @@ require "minitest/autorun"
 require "fakefs/safe"
 require "ironment"
 
+module FakeFS
+  class Pathname
+    def root?
+      !!(chop_basename(@path).nil? && /#{SEPARATOR_PAT}/o =~ @path)
+    end
+  end
+end
+
 describe Ironment::Finder do
   before :each do
     FakeFS.activate!
