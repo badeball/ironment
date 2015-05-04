@@ -28,4 +28,20 @@ describe Ironment::Populator do
 
     env.verify
   end
+
+  it "should ignore comment lines" do
+    File.write("/foo", <<-DAT.gsub(/^\s+/, ""))
+      # This is a comment
+    DAT
+
+    env = Minitest::Mock.new
+
+    # Expect no invokations
+
+    Ironment::Populator.new(
+      env: env
+    ).populate_with "/foo"
+
+    env.verify
+  end
 end
