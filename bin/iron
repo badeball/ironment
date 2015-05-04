@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "ironment"
+
+opts = OptionParser.new do |opts|
+  opts.banner = "Usage: ironment [options] COMMAND"
+
+  opts.on_tail("-h", "--help", "show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "print the version number of ironment") do
+    puts "ironment #{Ironment::VERSION}"
+    exit
+  end
+end
+
+opts.parse!
+
+if ARGV.empty?
+  raise ArgumentError, "missing command"
+end
+
+Ironment.new.exec_with_environment *ARGV
