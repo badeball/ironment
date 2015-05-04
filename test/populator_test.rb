@@ -18,9 +18,14 @@ describe Ironment::Populator do
       BAZ=2
     DAT
 
-    Ironment::Populator.new.populate_with "/foo"
+    env = Minitest::Mock.new
+    env.expect :[]=, "1", ["BAR", "1"]
+    env.expect :[]=, "2", ["BAZ", "2"]
 
-    assert_equal ENV["BAR"], "1"
-    assert_equal ENV["BAZ"], "2"
+    Ironment::Populator.new(
+      env: env
+    ).populate_with "/foo"
+
+    env.verify
   end
 end
