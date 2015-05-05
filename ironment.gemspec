@@ -32,8 +32,10 @@ Gem::Specification.new do |s|
     test/finder_test.rb
     test/ironment_test.rb
     test/populator_test.rb
+    test/runcom_test.rb
   ]
 
+  s.add_development_dependency("codeclimate-test-reporter")
   s.add_development_dependency("fakefs")
   s.add_development_dependency("minitest")
   s.add_development_dependency("rake")
