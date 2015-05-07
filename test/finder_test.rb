@@ -1,7 +1,4 @@
 require "test_helper"
-require "minitest/autorun"
-require "fakefs/safe"
-require "ironment"
 
 module FakeFS
   class Pathname

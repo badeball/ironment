@@ -1,7 +1,4 @@
 require "test_helper"
-require "minitest/autorun"
-require "fakefs/safe"
-require "ironment"
 
 describe Ironment::Runcom do
   before :each do

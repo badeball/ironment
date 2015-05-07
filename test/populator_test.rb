@@ -1,7 +1,4 @@
 require "test_helper"
-require "minitest/autorun"
-require "fakefs/safe"
-require "ironment"
 
 describe Ironment::Populator do
   it "should populate the environment with the runcom's key-value pairs" do

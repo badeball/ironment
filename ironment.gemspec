@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     test/ironment_test.rb
     test/populator_test.rb
     test/runcom_test.rb
+    test/test_helper.rb
   ]
 
   s.add_development_dependency("codeclimate-test-reporter")

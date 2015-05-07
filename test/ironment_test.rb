@@ -1,6 +1,4 @@
 require "test_helper"
-require "minitest/autorun"
-require "ironment"
 
 describe Ironment do
   describe "#exec_with_environment" do
