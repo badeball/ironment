@@ -20,5 +20,11 @@ describe Ironment::PairWriter do
 
       assert_equal "FOO=bar", File.read(".envrc")
     end
+
+    it "should create the file if it is missing" do
+      DummyWriter.new("/foo/bar/.envrc").write_pairs "FOO" => "bar"
+
+      assert_equal true, File.exist?("/foo/bar/.envrc")
+    end
   end
 end

@@ -35,5 +35,11 @@ describe Ironment::PairReader do
 
       assert_equal 0, pairs.size
     end
+
+    it "should return an empty collection if file is missing" do
+      pairs = DummyReader.new("does-not-exist").read_pairs
+
+      assert_equal 0, pairs.size
+    end
   end
 end
