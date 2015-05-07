@@ -23,8 +23,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  codeclimate-test-reporter
-  fakefs
+  codeclimate-test-reporter (= 0.4.7)
+  fakefs (= 0.6.7)
   ironment!
-  minitest
-  rake
+  minitest (= 5.5.1)
+  rake (= 10.4.2)

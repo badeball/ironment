@@ -37,8 +37,8 @@ Gem::Specification.new do |s|
     test/test_helper.rb
   ]
 
-  s.add_development_dependency("codeclimate-test-reporter")
-  s.add_development_dependency("fakefs")
-  s.add_development_dependency("minitest")
-  s.add_development_dependency("rake")
+  s.add_development_dependency("codeclimate-test-reporter", "0.4.7")
+  s.add_development_dependency("fakefs", "0.6.7")
+  s.add_development_dependency("minitest", "5.5.1")
+  s.add_development_dependency("rake", "10.4.2")
 end
