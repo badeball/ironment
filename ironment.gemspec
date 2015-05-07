@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.date        = "2015-05-04"
 
-  s.summary     = "Automatic environment variable container."
+  s.summary     = "Environment populator & command wrapper utility."
   s.description = "Ironment populates environment variables with runcoms and executes commands."
 
   s.authors     = ["Jonas Amundsen"]
