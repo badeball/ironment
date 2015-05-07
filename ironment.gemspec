@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     lib/ironment/executor.rb
     lib/ironment/finder.rb
     lib/ironment/populator.rb
+    lib/ironment/runcom.rb
     lib/ironment/version.rb
     test/finder_test.rb
     test/ironment_test.rb

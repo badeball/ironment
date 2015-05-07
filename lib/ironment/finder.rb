@@ -9,11 +9,11 @@ class Ironment
     def find
       Enumerator.new do |y|
         until @pwd.root?
-          y << cdrc if has_cdrc?
+          y << Runcom.new(cdrc) if has_cdrc?
           @pwd = @pwd.parent
         end
 
-        y << cdrc if has_cdrc?
+        y << Runcom.new(cdrc) if has_cdrc?
       end
     end
 

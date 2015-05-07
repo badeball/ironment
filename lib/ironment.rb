@@ -1,6 +1,7 @@
 require "ironment/finder"
 require "ironment/populator"
 require "ironment/executor"
+require "ironment/runcom"
 
 class Ironment
   class << self
