@@ -20,7 +20,7 @@ describe Ironment do
         executor: executor
       }).exec_with_environment "some-command"
 
-      [finder, populator, executor].each &:verify
+      [finder, truster, populator, executor].each &:verify
     end
   end
 end

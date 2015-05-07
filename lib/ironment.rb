@@ -1,8 +1,11 @@
+require "ironment/config"
 require "ironment/finder"
 require "ironment/pair_reader"
+require "ironment/pair_writer"
 require "ironment/populator"
 require "ironment/executor"
 require "ironment/runcom"
+require "ironment/truster"
 
 class Ironment
   class << self
