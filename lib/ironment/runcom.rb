@@ -2,6 +2,8 @@ require "digest/sha1"
 
 class Ironment
   class Runcom
+    include PairReader
+
     attr_reader :file
 
     def initialize(file)
@@ -13,16 +15,10 @@ class Ironment
     end
 
     def each_pair
-      pairs = Hash[*File.read(@file).split(/\n/).reject { |line|
-        /^\s*#/ =~line
-      }.map { |line|
-        line.split(/=/)
-      }.flatten]
-
       if block_given?
-        pairs.each &Proc.new
+        read_pairs.each &Proc.new
       else
-        pairs.each
+        read_pairs.each
       end
     end
 

@@ -27,11 +27,13 @@ Gem::Specification.new do |s|
     lib/ironment.rb
     lib/ironment/executor.rb
     lib/ironment/finder.rb
+    lib/ironment/pair_reader.rb
     lib/ironment/populator.rb
     lib/ironment/runcom.rb
     lib/ironment/version.rb
     test/finder_test.rb
     test/ironment_test.rb
+    test/pair_reader_test.rb
     test/populator_test.rb
     test/runcom_test.rb
     test/test_helper.rb

@@ -1,4 +1,5 @@
 require "ironment/finder"
+require "ironment/pair_reader"
 require "ironment/populator"
 require "ironment/executor"
 require "ironment/runcom"
