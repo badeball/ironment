@@ -21,6 +21,7 @@ class Ironment
   end
 
   def initialize(options = {})
+    @truster = options[:truster] || Truster.new
     @finder = options[:finder] || Finder.new
     @populator = options[:populator] || Populator.new
     @executor = options[:executor] || Executor.new
@@ -33,6 +34,7 @@ class Ironment
 
   def load_environment
     @finder.find.each do |runcom|
+      @truster.validate runcom
       @populator.populate_with runcom
     end
   end
