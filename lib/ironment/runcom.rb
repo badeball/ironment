@@ -2,8 +2,6 @@ require "digest/sha1"
 
 class Ironment
   class Runcom
-    include PairReader
-
     attr_reader :file
 
     def initialize(file)
@@ -24,6 +22,16 @@ class Ironment
 
     def ==(other)
       @file == other.file
+    end
+
+    private
+
+    def read_pairs
+      Hash[*File.read(file).split(/\n/).reject { |line|
+        /^\s*#/ =~line
+      }.map { |line|
+        line.split(/=/)
+      }.flatten]
     end
   end
 end

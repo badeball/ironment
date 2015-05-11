@@ -1,6 +1,3 @@
-require "ironment/pair_reader"
-require "ironment/pair_writer"
-
 class Hash
   def except(*keys)
     dup.except!(*keys)
@@ -26,9 +23,6 @@ class Ironment
       end
     end
 
-    include PairReader
-    include PairWriter
-
     def [](key)
       read_pairs[key]
     end
@@ -42,6 +36,26 @@ class Ironment
     end
 
     private
+
+    def read_pairs
+      if File.exist?(file)
+        Hash[*File.read(file).split(/\n/).map { |line|
+          line.split(/=/)
+        }.flatten]
+      else
+        {}
+      end
+    end
+
+    def write_pairs(pairs)
+      dir = Pathname.new(file).dirname
+
+      unless dir.exist?
+        dir.mkpath
+      end
+
+      File.write(file, pairs.map { |k, v| "#{k}=#{v}" }.join("\n"))
+    end
 
     def file
       self.class.config_path

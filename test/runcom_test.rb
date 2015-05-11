@@ -19,6 +19,30 @@ describe Ironment::Runcom do
     end
   end
 
+  describe "#each_pair" do
+    it "should return an enumerator for each key-value pair" do
+      File.write ".envrc", <<-DAT.gsub(/^\s+/, "")
+        BAR=1
+        BAZ=2
+      DAT
+
+      enum = Ironment::Runcom.new(".envrc").each_pair
+
+      assert_equal enum.next, ["BAR", "1"]
+      assert_equal enum.next, ["BAZ", "2"]
+    end
+
+    it "should ignore comment lines" do
+      File.write(".envrc", <<-DAT.gsub(/^\s+/, ""))
+        # This is a comment
+      DAT
+
+      enum = Ironment::Runcom.new(".envrc").each_pair
+
+      assert_equal 0, enum.size
+    end
+  end
+
   describe "#==" do
     it "should return true for two runcoms of same file" do
       one = Ironment::Runcom.new ".envrc"

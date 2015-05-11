@@ -28,8 +28,6 @@ Gem::Specification.new do |s|
     lib/ironment/config.rb
     lib/ironment/executor.rb
     lib/ironment/finder.rb
-    lib/ironment/pair_reader.rb
-    lib/ironment/pair_writer.rb
     lib/ironment/populator.rb
     lib/ironment/runcom.rb
     lib/ironment/truster.rb
@@ -37,8 +35,6 @@ Gem::Specification.new do |s|
     test/config_test.rb
     test/finder_test.rb
     test/ironment_test.rb
-    test/pair_reader_test.rb
-    test/pair_writer_test.rb
     test/populator_test.rb
     test/runcom_test.rb
     test/test_helper.rb
