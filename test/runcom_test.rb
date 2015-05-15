@@ -17,6 +17,19 @@ describe Ironment::Runcom do
       # The sha1sum of "FOO=1"
       assert_equal "67364d1a7020017cf162d2751680b0f89f51da70", Ironment::Runcom.new(".envrc").sha1sum
     end
+
+    it "should cache the file content on first read" do
+      File.write(".envrc", "FOO=1")
+
+      runcom = Ironment::Runcom.new(".envrc")
+
+      runcom.sha1sum
+
+      File.delete(".envrc")
+
+      # The sha1sum of "FOO=1"
+      assert_equal "67364d1a7020017cf162d2751680b0f89f51da70", runcom.sha1sum
+    end
   end
 
   describe "#each_pair" do

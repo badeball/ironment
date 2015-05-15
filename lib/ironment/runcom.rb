@@ -9,7 +9,7 @@ class Ironment
     end
 
     def sha1sum
-      Digest::SHA1.hexdigest(File.read(@file))
+      Digest::SHA1.hexdigest(content)
     end
 
     def each_pair
@@ -24,10 +24,14 @@ class Ironment
       @file == other.file
     end
 
+    def content
+      @content ||= File.read(file)
+    end
+
     private
 
     def read_pairs
-      Hash[*File.read(file).split(/\n/).reject { |line|
+      Hash[*content.split(/\n/).reject { |line|
         /^\s*#/ =~line
       }.map { |line|
         line.split(/=/)
