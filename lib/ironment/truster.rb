@@ -2,8 +2,16 @@ require "digest/sha1"
 
 class Ironment
   class Truster
-    class NotTrusted < StandardError; end
-    class Modified < StandardError; end
+    class RuncomError < StandardError
+      attr_reader :runcom
+
+      def initialize(runcom)
+        @runcom = runcom
+      end
+    end
+
+    class NotTrusted < RuncomError; end
+    class Modified < RuncomError; end
 
     def initialize(options = {})
       @config = options[:config] || Config.new
@@ -13,13 +21,13 @@ class Ironment
       expected_sha1sum = @config[runcom.file]
 
       if expected_sha1sum.nil?
-        raise NotTrusted
+        raise NotTrusted, runcom
       end
 
       real_sha1sum = runcom.sha1sum
 
       unless expected_sha1sum == real_sha1sum
-        raise Modified
+        raise Modified, runcom
       end
 
       true
