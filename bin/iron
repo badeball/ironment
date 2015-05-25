@@ -23,4 +23,4 @@ if ARGV.empty?
   raise ArgumentError, "missing command"
 end
 
-Ironment.new.exec_with_environment *ARGV
+Ironment::CL.new.exec_with_environment *ARGV
