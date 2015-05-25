@@ -1,6 +1,4 @@
-require "minitest/autorun"
-require "fakefs/safe"
-require "ironment"
+require "test_helper"
 
 module FakeFS
   class Pathname
@@ -26,7 +24,7 @@ describe Ironment::Finder do
     FileUtils.touch "/foo/bar/.envrc"
 
     Dir.chdir "/foo/bar" do
-      assert_includes Ironment::Finder.new.find, "/foo/bar/.envrc"
+      assert_includes Ironment::Finder.new.find, Ironment::Runcom.new("/foo/bar/.envrc")
     end
   end
 
@@ -34,7 +32,7 @@ describe Ironment::Finder do
     FileUtils.touch "/foo/.envrc"
 
     Dir.chdir "/foo/bar" do
-      assert_includes Ironment::Finder.new.find, "/foo/.envrc"
+      assert_includes Ironment::Finder.new.find, Ironment::Runcom.new("/foo/.envrc")
     end
   end
 
@@ -42,7 +40,7 @@ describe Ironment::Finder do
     FileUtils.touch "/.envrc"
 
     Dir.chdir "/foo/bar" do
-      assert_includes Ironment::Finder.new.find, "/.envrc"
+      assert_includes Ironment::Finder.new.find, Ironment::Runcom.new("/.envrc")
     end
   end
 end

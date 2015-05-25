@@ -4,12 +4,11 @@ class Ironment
       @env = options[:env] || ENV
     end
 
-    def populate_with(name)
-      File.readlines(name).each do |line|
-        unless /^\s*#/ =~ line
-          key, value = line.strip.split "="
-          @env[key] = value
-        end
+    def populate_with(runcom)
+      enum = runcom.each_pair
+
+      loop do
+        @env.[]= *enum.next
       end
     end
   end

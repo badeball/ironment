@@ -6,15 +6,25 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    codeclimate-test-reporter (0.4.7)
+      simplecov (>= 0.7.1, < 1.0.0)
+    docile (1.1.5)
     fakefs (0.6.7)
+    json (1.8.2)
     minitest (5.5.1)
     rake (10.4.2)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  fakefs
+  codeclimate-test-reporter (= 0.4.7)
+  fakefs (= 0.6.7)
   ironment!
-  minitest
-  rake
+  minitest (= 5.5.1)
+  rake (= 10.4.2)

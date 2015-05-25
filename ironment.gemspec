@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.date        = "2015-05-04"
 
-  s.summary     = "Automatic environment variable container."
+  s.summary     = "Environment populator & command wrapper utility."
   s.description = "Ironment populates environment variables with runcoms and executes commands."
 
   s.authors     = ["Jonas Amundsen"]
@@ -25,16 +25,24 @@ Gem::Specification.new do |s|
     bin/iron
     ironment.gemspec
     lib/ironment.rb
+    lib/ironment/config.rb
     lib/ironment/executor.rb
     lib/ironment/finder.rb
     lib/ironment/populator.rb
+    lib/ironment/runcom.rb
+    lib/ironment/truster.rb
     lib/ironment/version.rb
+    test/config_test.rb
     test/finder_test.rb
     test/ironment_test.rb
     test/populator_test.rb
+    test/runcom_test.rb
+    test/test_helper.rb
+    test/truster_test.rb
   ]
 
-  s.add_development_dependency("fakefs")
-  s.add_development_dependency("minitest")
-  s.add_development_dependency("rake")
+  s.add_development_dependency("codeclimate-test-reporter", "0.4.7")
+  s.add_development_dependency("fakefs", "0.6.7")
+  s.add_development_dependency("minitest", "5.5.1")
+  s.add_development_dependency("rake", "10.4.2")
 end
