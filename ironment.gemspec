@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
     bin/iron
     ironment.gemspec
     lib/ironment.rb
+    lib/ironment/cl.rb
+    lib/ironment/cl/prompter.rb
     lib/ironment/config.rb
     lib/ironment/executor.rb
     lib/ironment/finder.rb
@@ -32,6 +34,7 @@ Gem::Specification.new do |s|
     lib/ironment/runcom.rb
     lib/ironment/truster.rb
     lib/ironment/version.rb
+    test/cl_test.rb
     test/config_test.rb
     test/finder_test.rb
     test/ironment_test.rb
