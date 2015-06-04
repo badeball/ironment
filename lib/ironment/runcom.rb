@@ -5,7 +5,7 @@ class Ironment
     attr_reader :file
 
     def initialize(file)
-      @file = file
+      @file = File.expand_path file
     end
 
     def sha1sum

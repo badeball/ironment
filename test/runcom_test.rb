@@ -10,6 +10,18 @@ describe Ironment::Runcom do
     FakeFS.deactivate!
   end
 
+  describe "#initialize" do
+    it "should expand the given path" do
+      Dir.mkdir "/foo"
+
+      Dir.chdir "/foo" do
+        expanded_path = Ironment::Runcom.new(".envrc").file
+
+        assert_equal "/foo/.envrc", expanded_path
+      end
+    end
+  end
+
   describe "#sha1sum" do
     it "should return the sha1sum of the runcom" do
       File.write(".envrc", "FOO=1")
