@@ -41,6 +41,8 @@ Gem::Specification.new do |s|
     test/truster_test.rb
   ]
 
+  s.add_dependency("commander", "4.3.4")
+
   s.add_development_dependency("codeclimate-test-reporter", "0.4.7")
   s.add_development_dependency("fakefs", "0.6.7")
   s.add_development_dependency("minitest", "5.5.1")

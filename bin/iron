@@ -1,26 +1,39 @@
 #!/usr/bin/env ruby
 
-require "optparse"
+require "commander/import"
 require "ironment"
+require "ironment/version"
 
-opts = OptionParser.new do |opts|
-  opts.banner = "Usage: ironment [options] COMMAND"
+program :name, "Ironment"
+program :version, Ironment::VERSION
+program :description, "Environment populator & command wrapper utility."
 
-  opts.on_tail("-h", "--help", "show this message") do
-    puts opts
-    exit
-  end
-
-  opts.on_tail("-v", "--version", "print the version number of ironment") do
-    puts "ironment #{Ironment::VERSION}"
-    exit
+command :exec do |c|
+  c.syntax = "exec [files..]"
+  c.description = "create a new environment (default)"
+  c.action do |args|
+    Ironment::CL.new.exec_with_environment *args
   end
 end
 
-opts.parse!
-
-if ARGV.empty?
-  raise ArgumentError, "missing command"
+command :trust do |c|
+  c.syntax = "trust [files..]"
+  c.description = "add a file as trusted"
+  c.action do |args|
+    args.each do |file|
+      Ironment::CL.new.trust file
+    end
+  end
 end
 
-Ironment::CL.new.exec_with_environment *ARGV
+command :untrust do |c|
+  c.syntax = "untrust [files..]"
+  c.description = "remove a file as trusted"
+  c.action do |args|
+    args.each do |file|
+      Ironment::CL.new.untrust file
+    end
+  end
+end
+
+default_command :exec
