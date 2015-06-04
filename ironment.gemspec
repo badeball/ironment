@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name        = "ironment"
   s.version     = Ironment::VERSION
   s.license     = "MIT"
-  s.date        = "2015-05-04"
+  s.date        = "2015-06-04"
 
   s.summary     = "Environment populator & command wrapper utility."
   s.description = "Ironment populates environment variables with runcoms and executes commands."

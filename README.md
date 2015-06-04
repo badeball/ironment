@@ -23,6 +23,12 @@ FOO=bar
 
 ## Changelog
 
+### 0.0.2
+
+* Adding a concept of trust. A file that has never been seen will no longer
+  uncritically be used to populate the environment. Instead, the user will be
+  prompted with its sha1sum and asked if they really want to trust it.
+
 ### 0.0.1
 
 * Initial version. Contains basic support for wrapping commands and populating
