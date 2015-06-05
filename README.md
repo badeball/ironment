@@ -23,6 +23,10 @@ FOO=bar
 
 ## Changelog
 
+### 0.0.3
+
+* Correct an error in the gemspec.
+
 ### 0.0.2
 
 * Adding a concept of trust. A file that has never been seen will no longer
