@@ -21,6 +21,26 @@ $ iron env
 FOO=bar
 ```
 
+## Installation
+
+The utility can be installed using `gem`.
+
+```
+$ gem install ironment
+```
+
+It can be installed system-wide using the following options.
+
+```
+$ gem install --no-user-install -i "$(ruby -e'puts Gem.default_dir')" -n /usr/local/bin ironment
+```
+
+It is also packaged for Arch Linux.
+
+```
+$ yaourt -S ruby-ironment
+```
+
 ## Changelog
 
 ### 0.0.3
