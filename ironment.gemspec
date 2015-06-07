@@ -12,36 +12,9 @@ Gem::Specification.new do |s|
   s.email       = ["jonasba+gem@gmail.com"]
   s.homepage    = "https://github.com/badeball/ironment"
 
-  s.executables = "iron"
-
-  s.files       = %w[
-    .travis.yml
-    Gemfile
-    Gemfile.lock
-    LICENSE
-    README.md
-    Rakefile
-    bin/iron
-    ironment.gemspec
-    lib/ironment.rb
-    lib/ironment/cl.rb
-    lib/ironment/cl/prompter.rb
-    lib/ironment/config.rb
-    lib/ironment/executor.rb
-    lib/ironment/finder.rb
-    lib/ironment/populator.rb
-    lib/ironment/runcom.rb
-    lib/ironment/truster.rb
-    lib/ironment/version.rb
-    test/cl_test.rb
-    test/config_test.rb
-    test/finder_test.rb
-    test/ironment_test.rb
-    test/populator_test.rb
-    test/runcom_test.rb
-    test/test_helper.rb
-    test/truster_test.rb
-  ]
+  s.executable  = "iron"
+  s.files       = Dir["LICENSE", "README.md", "lib/**/*"]
+  s.test_files  = Dir["test/**/*.rb"]
 
   s.add_dependency("commander", "4.3.4")
 
