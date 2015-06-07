@@ -43,9 +43,13 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 0.0.4
+
+* Correcting a bug under ruby-1.9.3.
+
 ### 0.0.3
 
-* Correct an error in the gemspec.
+* Correcting an error in the gemspec.
 
 ### 0.0.2
 
