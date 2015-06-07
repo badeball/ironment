@@ -64,7 +64,7 @@ describe Ironment::Runcom do
 
       enum = Ironment::Runcom.new(".envrc").each_pair
 
-      assert_equal 0, enum.size
+      assert_equal 0, enum.count
     end
   end
 
