@@ -10,25 +10,25 @@ def test_exception_handling(exception, method, message)
 
   describe "upon receiving #{exception.inspect}" do
     it "should return false" do
-      result = Ironment::CL.new(truster: truster, stderr: StringIO.new).send(method, ".envrc")
+      result = Ironment::CL.new(truster: truster, err: StringIO.new).send(method, ".envrc")
 
       assert_equal false, result
     end
 
     it "should write #{message.inspect} to :stderr" do
-      stderr = StringIO.new
+      err = StringIO.new
 
-      Ironment::CL.new(truster: truster, stderr: stderr).send(method, ".envrc")
+      Ironment::CL.new(truster: truster, err: err).send(method, ".envrc")
 
-      assert_includes stderr.string, message
+      assert_includes err.string, message
     end
 
     it ":stderr should end with a newline" do
-      stderr = StringIO.new
+      err = StringIO.new
 
-      Ironment::CL.new(truster: truster, stderr: stderr).send(method, ".envrc")
+      Ironment::CL.new(truster: truster, err: err).send(method, ".envrc")
 
-      assert_equal "\n", stderr.string[-1]
+      assert_equal "\n", err.string[-1]
     end
   end
 end
@@ -47,11 +47,11 @@ describe Ironment::CL do
         truster = Minitest::Mock.new
         truster.expect :trust, true, [Ironment::Runcom.new(".envrc")]
 
-        stderr = StringIO.new
+        err = StringIO.new
 
-        Ironment::CL.new(truster: truster, stderr: stderr).trust(".envrc")
+        Ironment::CL.new(truster: truster, err: err).trust(".envrc")
 
-        assert_equal "", stderr.string
+        assert_equal "", err.string
       end
     end
 
@@ -73,11 +73,11 @@ describe Ironment::CL do
         truster = Minitest::Mock.new
         truster.expect :untrust, true, [Ironment::Runcom.new(".envrc")]
 
-        stderr = StringIO.new
+        err = StringIO.new
 
-        Ironment::CL.new(truster: truster, stderr: stderr).untrust(".envrc")
+        Ironment::CL.new(truster: truster, err: err).untrust(".envrc")
 
-        assert_equal "", stderr.string
+        assert_equal "", err.string
       end
     end
 

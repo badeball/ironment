@@ -4,7 +4,7 @@ class Ironment
       @ironment = options[:ironment] || Ironment.new
       @prompter = options[:prompter] || Prompter.new
       @truster = options[:truster] || Truster.new
-      @stderr = options[:stderr] || $stderr
+      @err = options[:err] || $err
     end
 
     def exec_with_environment(command, *args)
@@ -24,15 +24,15 @@ class Ironment
 
       true
     rescue Errno::EACCES
-      @stderr.puts "ironment: Permission denied"
+      @err.puts "ironment: Permission denied"
 
       false
     rescue Errno::ENOENT
-      @stderr.puts "ironment: No such file or directory"
+      @err.puts "ironment: No such file or directory"
 
       false
     rescue Errno::EISDIR
-      @stderr.puts "ironment: Is a directory"
+      @err.puts "ironment: Is a directory"
 
       false
     end
@@ -42,15 +42,15 @@ class Ironment
 
       true
     rescue Errno::EACCES
-      @stderr.puts "ironment: Permission denied"
+      @err.puts "ironment: Permission denied"
 
       false
     rescue Errno::ENOENT
-      @stderr.puts "ironment: No such file or directory"
+      @err.puts "ironment: No such file or directory"
 
       false
     rescue Errno::EISDIR
-      @stderr.puts "ironment: Is a directory"
+      @err.puts "ironment: Is a directory"
 
       false
     end
