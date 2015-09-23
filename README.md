@@ -1,7 +1,7 @@
 Ironment
 ========
 
-[![Build Status](https://travis-ci.org/badeball/ironment.svg)](https://travis-ci.org/badeball/ironment)
+[![Build Status](https://travis-ci.org/badeball/ironment.svg?branch=master)](https://travis-ci.org/badeball/ironment)
 [![Code Climate](https://codeclimate.com/github/badeball/ironment/badges/gpa.svg)](https://codeclimate.com/github/badeball/ironment)
 [![Test Coverage](https://codeclimate.com/github/badeball/ironment/badges/coverage.svg)](https://codeclimate.com/github/badeball/ironment/coverage)
 
