@@ -32,6 +32,14 @@ class Ironment
     @executor.exec command, *args
   end
 
+  def trust(file)
+    @truster.trust Runcom.new file
+  end
+
+  def untrust(file)
+    @truster.untrust Runcom.new file
+  end
+
   private
 
   def load_environment

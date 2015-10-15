@@ -1,9 +1,8 @@
 class Ironment
   class CL
     def initialize(options = {})
-      @ironment = options[:ironment] || Ironment.new
+      @ironment = options[:ironment] || Ironment.new(options)
       @prompter = options[:prompter] || Prompter.new
-      @truster = options[:truster] || Truster.new
       @err = options[:err] || $stderr
     end
 
@@ -20,7 +19,7 @@ class Ironment
     end
 
     def trust(file)
-      @truster.trust Runcom.new(file)
+      @ironment.trust file
     rescue Errno::EACCES
       @err.puts "ironment: Permission denied"
     rescue Errno::ENOENT
@@ -30,7 +29,7 @@ class Ironment
     end
 
     def untrust(file)
-      @truster.untrust Runcom.new(file)
+      @ironment.untrust file
     rescue Errno::EACCES
       @err.puts "ironment: Permission denied"
     rescue Errno::ENOENT

@@ -27,4 +27,26 @@ describe Ironment do
       [finder, truster, populator, executor].each &:verify
     end
   end
+
+  describe "#trust" do
+    it "should invoke Ironment::Truster#trust with a runcom" do
+      truster = MiniTest::Mock.new
+      truster.expect :trust, nil, [Ironment::Runcom.new("foo")]
+
+      Ironment.new(truster: truster).trust "foo"
+
+      truster.verify
+    end
+  end
+
+  describe "#untrust" do
+    it "should invoke Ironment::Truster#untrust with a runcom" do
+      truster = MiniTest::Mock.new
+      truster.expect :untrust, nil, [Ironment::Runcom.new("foo")]
+
+      Ironment.new(truster: truster).untrust "foo"
+
+      truster.verify
+    end
+  end
 end

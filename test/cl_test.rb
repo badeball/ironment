@@ -2,9 +2,9 @@ require "test_helper"
 require "stringio"
 
 def test_exception_handling(exception, method, message)
-  truster = Object.new
+  ironment = Object.new
 
-  truster.define_singleton_method method do |*|
+  ironment.define_singleton_method method do |*|
     raise exception
   end
 
@@ -12,7 +12,7 @@ def test_exception_handling(exception, method, message)
     it "should write #{message.inspect} to :stderr" do
       err = StringIO.new
 
-      Ironment::CL.new(truster: truster, err: err).send(method, ".envrc")
+      Ironment::CL.new(ironment: ironment, err: err).send(method, ".envrc")
 
       assert_includes err.string, message
     end
@@ -20,7 +20,7 @@ def test_exception_handling(exception, method, message)
     it ":stderr should end with a newline" do
       err = StringIO.new
 
-      Ironment::CL.new(truster: truster, err: err).send(method, ".envrc")
+      Ironment::CL.new(ironment: ironment, err: err).send(method, ".envrc")
 
       assert_equal "\n", err.string[-1]
     end
