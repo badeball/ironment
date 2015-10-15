@@ -34,6 +34,7 @@ class Ironment
       Hash[*content.split(/\n/).reject { |line|
         /^\s*#/ =~line
       }.map { |line|
+        raise MalformedRuncom unless line.include? "="
         line.split(/=/)
       }.flatten]
     end

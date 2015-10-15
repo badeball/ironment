@@ -8,6 +8,8 @@ require "ironment/runcom"
 require "ironment/truster"
 
 class Ironment
+  class MalformedRuncom < StandardError; end
+
   class << self
     attr_writer :runcom
 

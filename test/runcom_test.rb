@@ -66,6 +66,16 @@ describe Ironment::Runcom do
 
       assert_equal 0, enum.count
     end
+
+    it "should raise MalformedRuncom upon reading a malformed file" do
+      File.write(".envrc", <<-DAT.gsub(/^\s+/, ""))
+        FOO+1
+      DAT
+
+      assert_raises Ironment::MalformedRuncom do
+        Ironment::Runcom.new(".envrc").each_pair
+      end
+    end
   end
 
   describe "#==" do
