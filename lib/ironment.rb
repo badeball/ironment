@@ -32,6 +32,8 @@ class Ironment
     @executor.exec command, *args
   end
 
+  private
+
   def load_environment
     @finder.find.each do |runcom|
       @truster.validate runcom
