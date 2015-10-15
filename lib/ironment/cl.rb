@@ -4,7 +4,7 @@ class Ironment
       @ironment = options[:ironment] || Ironment.new
       @prompter = options[:prompter] || Prompter.new
       @truster = options[:truster] || Truster.new
-      @err = options[:err] || $err
+      @err = options[:err] || $stderr
     end
 
     def exec_with_environment(command, *args)
