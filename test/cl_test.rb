@@ -9,12 +9,6 @@ def test_exception_handling(exception, method, message)
   end
 
   describe "upon receiving #{exception.inspect}" do
-    it "should return false" do
-      result = Ironment::CL.new(truster: truster, err: StringIO.new).send(method, ".envrc")
-
-      assert_equal false, result
-    end
-
     it "should write #{message.inspect} to :stderr" do
       err = StringIO.new
 
@@ -36,13 +30,6 @@ end
 describe Ironment::CL do
   describe "#trust" do
     describe "when succesfully trusting a file" do
-      it "should return true" do
-        truster = Minitest::Mock.new
-        truster.expect :trust, true, [Ironment::Runcom.new(".envrc")]
-
-        assert_equal true, Ironment::CL.new(truster: truster).trust(".envrc")
-      end
-
       it "should not write to :stderr" do
         truster = Minitest::Mock.new
         truster.expect :trust, true, [Ironment::Runcom.new(".envrc")]
@@ -62,13 +49,6 @@ describe Ironment::CL do
 
   describe "#untrust" do
     describe "when succesfully untrusting a file" do
-      it "should return true" do
-        truster = Minitest::Mock.new
-        truster.expect :untrust, true, [Ironment::Runcom.new(".envrc")]
-
-        assert_equal true, Ironment::CL.new(truster: truster).untrust(".envrc")
-      end
-
       it "should not write to :stderr" do
         truster = Minitest::Mock.new
         truster.expect :untrust, true, [Ironment::Runcom.new(".envrc")]

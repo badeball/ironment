@@ -21,38 +21,22 @@ class Ironment
 
     def trust(file)
       @truster.trust Runcom.new(file)
-
-      true
     rescue Errno::EACCES
       @err.puts "ironment: Permission denied"
-
-      false
     rescue Errno::ENOENT
       @err.puts "ironment: No such file or directory"
-
-      false
     rescue Errno::EISDIR
       @err.puts "ironment: Is a directory"
-
-      false
     end
 
     def untrust(file)
       @truster.untrust Runcom.new(file)
-
-      true
     rescue Errno::EACCES
       @err.puts "ironment: Permission denied"
-
-      false
     rescue Errno::ENOENT
       @err.puts "ironment: No such file or directory"
-
-      false
     rescue Errno::EISDIR
       @err.puts "ironment: Is a directory"
-
-      false
     end
   end
 end
