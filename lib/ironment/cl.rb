@@ -14,6 +14,8 @@ class Ironment
       @err.puts "ironment: No such file or directory"
     rescue Errno::EISDIR
       @err.puts "ironment: Is a directory"
+    rescue Ironment::MalformedRuncom
+      @err.puts "ironment: Malformed runcom"
     rescue Truster::NotTrusted => e
       if @prompter.not_trusted e.runcom
         exec_with_environment command, *args

@@ -45,6 +45,7 @@ describe Ironment::CL do
     test_exception_handling Errno::EACCES, "ironment: Permission denied", :exec_with_environment, "foo"
     test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :exec_with_environment, "foo"
     test_exception_handling Errno::EISDIR, "ironment: Is a directory", :exec_with_environment, "foo"
+    test_exception_handling Ironment::MalformedRuncom, "ironment: Malformed runcom", :exec_with_environment, "foo"
   end
 
   describe "#trust" do
