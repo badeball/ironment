@@ -1,7 +1,7 @@
 require "test_helper"
 require "stringio"
 
-def test_exception_handling(exception, method, message)
+def test_exception_handling(exception, message, method, *args)
   ironment = Object.new
 
   ironment.define_singleton_method method do |*|
@@ -12,7 +12,7 @@ def test_exception_handling(exception, method, message)
     it "should write #{message.inspect} to :stderr" do
       err = StringIO.new
 
-      Ironment::CL.new(ironment: ironment, err: err).send(method, ".envrc")
+      Ironment::CL.new(ironment: ironment, err: err).send(method, *args)
 
       assert_includes err.string, message
     end
@@ -20,7 +20,7 @@ def test_exception_handling(exception, method, message)
     it ":stderr should end with a newline" do
       err = StringIO.new
 
-      Ironment::CL.new(ironment: ironment, err: err).send(method, ".envrc")
+      Ironment::CL.new(ironment: ironment, err: err).send(method, *args)
 
       assert_equal "\n", err.string[-1]
     end
@@ -41,6 +41,10 @@ describe Ironment::CL do
         assert_equal "", err.string
       end
     end
+
+    test_exception_handling Errno::EACCES, "ironment: Permission denied", :exec_with_environment, "foo"
+    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :exec_with_environment, "foo"
+    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :exec_with_environment, "foo"
   end
 
   describe "#trust" do
@@ -57,9 +61,9 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Errno::EACCES, :trust, "ironment: Permission denied"
-    test_exception_handling Errno::ENOENT, :trust, "ironment: No such file or directory"
-    test_exception_handling Errno::EISDIR, :trust, "ironment: Is a directory"
+    test_exception_handling Errno::EACCES, "ironment: Permission denied", :trust, ".envrc"
+    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :trust, ".envrc"
+    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :trust, ".envrc"
   end
 
   describe "#untrust" do
@@ -76,8 +80,8 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Errno::EACCES, :untrust, "ironment: Permission denied"
-    test_exception_handling Errno::ENOENT, :untrust, "ironment: No such file or directory"
-    test_exception_handling Errno::EISDIR, :untrust, "ironment: Is a directory"
+    test_exception_handling Errno::EACCES, "ironment: Permission denied", :untrust, ".envrc"
+    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :untrust, ".envrc"
+    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :untrust, ".envrc"
   end
 end

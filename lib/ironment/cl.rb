@@ -8,6 +8,12 @@ class Ironment
 
     def exec_with_environment(command, *args)
       @ironment.exec_with_environment command, *args
+    rescue Errno::EACCES
+      @err.puts "ironment: Permission denied"
+    rescue Errno::ENOENT
+      @err.puts "ironment: No such file or directory"
+    rescue Errno::EISDIR
+      @err.puts "ironment: Is a directory"
     rescue Truster::NotTrusted => e
       if @prompter.not_trusted e.runcom
         exec_with_environment command, *args
