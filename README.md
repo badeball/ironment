@@ -43,6 +43,11 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 0.0.5
+
+* `iron exec` now handles EACCES, ENOENT & EISDIR like `iron trust` and `iron untrust` does.
+* `iron exec` now handles malformed runcom files.
+
 ### 0.0.4
 
 * Correcting a bug under ruby-1.9.3.
