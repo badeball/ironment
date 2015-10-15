@@ -28,6 +28,21 @@ def test_exception_handling(exception, method, message)
 end
 
 describe Ironment::CL do
+  describe "#exec_with_environment" do
+    describe "when successfully execing with a command" do
+      it "should not write to :stderr" do
+        ironment = Minitest::Mock.new
+        ironment.expect :exec_with_environment, true, ["foo"]
+
+        err = StringIO.new
+
+        Ironment::CL.new(ironment: ironment, err: err).exec_with_environment("foo")
+
+        assert_equal "", err.string
+      end
+    end
+  end
+
   describe "#trust" do
     describe "when succesfully trusting a file" do
       it "should not write to :stderr" do
