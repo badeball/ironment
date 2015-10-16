@@ -7,7 +7,17 @@ class Ironment
     end
 
     def exec_with_environment(command, *args)
-      @ironment.exec_with_environment command, *args
+      begin
+        @ironment.exec_with_environment command, *args
+      rescue Truster::NotTrusted => e
+        if @prompter.not_trusted e.runcom
+          exec_with_environment command, *args
+        end
+      rescue Truster::Modified => e
+        if @prompter.modified e.runcom
+          exec_with_environment command, *args
+        end
+      end
     rescue Errno::EACCES
       @err.puts "ironment: Permission denied"
     rescue Errno::ENOENT
@@ -16,14 +26,6 @@ class Ironment
       @err.puts "ironment: Is a directory"
     rescue Ironment::MalformedRuncom
       @err.puts "ironment: Malformed runcom"
-    rescue Truster::NotTrusted => e
-      if @prompter.not_trusted e.runcom
-        exec_with_environment command, *args
-      end
-    rescue Truster::Modified => e
-      if @prompter.modified e.runcom
-        exec_with_environment command, *args
-      end
     end
 
     def trust(file)
