@@ -42,9 +42,9 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Errno::EACCES, "ironment: Permission denied", :exec_with_environment, "foo"
-    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :exec_with_environment, "foo"
-    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :exec_with_environment, "foo"
+    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :exec_with_environment, "foo"
+    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :exec_with_environment, "foo"
+    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :exec_with_environment, "foo"
     test_exception_handling Ironment::MalformedRuncom, "ironment: Malformed runcom", :exec_with_environment, "foo"
   end
 
@@ -62,9 +62,9 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Errno::EACCES, "ironment: Permission denied", :trust, ".envrc"
-    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :trust, ".envrc"
-    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :trust, ".envrc"
+    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :trust, ".envrc"
+    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :trust, ".envrc"
+    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :trust, ".envrc"
   end
 
   describe "#untrust" do
@@ -81,8 +81,8 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Errno::EACCES, "ironment: Permission denied", :untrust, ".envrc"
-    test_exception_handling Errno::ENOENT, "ironment: No such file or directory", :untrust, ".envrc"
-    test_exception_handling Errno::EISDIR, "ironment: Is a directory", :untrust, ".envrc"
+    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :untrust, ".envrc"
+    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :untrust, ".envrc"
+    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :untrust, ".envrc"
   end
 end
