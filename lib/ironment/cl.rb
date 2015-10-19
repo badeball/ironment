@@ -1,5 +1,27 @@
 class Ironment
   class CL
+    class << self
+      def rescue_common_exceptions(method_name)
+        new_name = "original_#{method_name}"
+
+        alias_method new_name, method_name
+
+        define_method method_name do |*args|
+          begin
+            send new_name, *args
+          rescue Errno::EACCES
+            @err.puts "ironment: Permission denied"
+          rescue Errno::ENOENT
+            @err.puts "ironment: No such file or directory"
+          rescue Errno::EISDIR
+            @err.puts "ironment: Is a directory"
+          rescue Ironment::MalformedRuncom
+            @err.puts "ironment: Malformed runcom"
+          end
+        end
+      end
+    end
+
     def initialize(options = {})
       @ironment = options[:ironment] || Ironment.new(options)
       @prompter = options[:prompter] || Prompter.new
@@ -18,34 +40,20 @@ class Ironment
           exec_with_environment command, *args
         end
       end
-    rescue Errno::EACCES
-      @err.puts "ironment: Permission denied"
-    rescue Errno::ENOENT
-      @err.puts "ironment: No such file or directory"
-    rescue Errno::EISDIR
-      @err.puts "ironment: Is a directory"
-    rescue Ironment::MalformedRuncom
-      @err.puts "ironment: Malformed runcom"
     end
+
+    rescue_common_exceptions :exec_with_environment
 
     def trust(file)
       @ironment.trust file
-    rescue Errno::EACCES
-      @err.puts "ironment: Permission denied"
-    rescue Errno::ENOENT
-      @err.puts "ironment: No such file or directory"
-    rescue Errno::EISDIR
-      @err.puts "ironment: Is a directory"
     end
+
+    rescue_common_exceptions :trust
 
     def untrust(file)
       @ironment.untrust file
-    rescue Errno::EACCES
-      @err.puts "ironment: Permission denied"
-    rescue Errno::ENOENT
-      @err.puts "ironment: No such file or directory"
-    rescue Errno::EISDIR
-      @err.puts "ironment: Is a directory"
     end
+
+    rescue_common_exceptions :untrust
   end
 end
