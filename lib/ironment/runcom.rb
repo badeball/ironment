@@ -29,7 +29,7 @@ class Ironment
     def content
       @content ||= File.read(file)
     rescue Errno::EACCES
-      raise AccessDenied
+      raise AccessDenied, file
     end
 
     def read_pairs

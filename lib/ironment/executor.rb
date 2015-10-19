@@ -9,11 +9,11 @@ class Ironment
     def exec(command, *args)
       @exec.exec command, *args
     rescue Errno::EACCES
-      raise AccessDenied
+      raise AccessDenied, command
     rescue Errno::ENOENT
-      raise NoEntity
+      raise NoEntity, command
     rescue Errno::EISDIR
-      raise IsDirectory
+      raise IsDirectory, command
     end
   end
 end

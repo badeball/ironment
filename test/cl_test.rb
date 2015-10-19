@@ -5,7 +5,7 @@ def test_exception_handling(exception, message, method, *args)
   ironment = Object.new
 
   ironment.define_singleton_method method do |*|
-    raise exception
+    raise exception, args.first
   end
 
   describe "upon receiving #{exception.inspect}" do
@@ -42,10 +42,10 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :exec_with_environment, "foo"
-    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :exec_with_environment, "foo"
-    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :exec_with_environment, "foo"
-    test_exception_handling Ironment::MalformedRuncom, "ironment: Malformed runcom", :exec_with_environment, "foo"
+    test_exception_handling Ironment::AccessDenied, "ironment: foo: Permission denied", :exec_with_environment, "foo"
+    test_exception_handling Ironment::NoEntity, "ironment: foo: No such file or directory", :exec_with_environment, "foo"
+    test_exception_handling Ironment::IsDirectory, "ironment: foo: Is a directory", :exec_with_environment, "foo"
+    test_exception_handling Ironment::MalformedRuncom, "ironment: foo: Malformed runcom", :exec_with_environment, "foo"
   end
 
   describe "#trust" do
@@ -62,9 +62,9 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :trust, ".envrc"
-    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :trust, ".envrc"
-    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :trust, ".envrc"
+    test_exception_handling Ironment::AccessDenied, "ironment: .envrc: Permission denied", :trust, ".envrc"
+    test_exception_handling Ironment::NoEntity, "ironment: .envrc: No such file or directory", :trust, ".envrc"
+    test_exception_handling Ironment::IsDirectory, "ironment: .envrc: Is a directory", :trust, ".envrc"
   end
 
   describe "#untrust" do
@@ -81,8 +81,8 @@ describe Ironment::CL do
       end
     end
 
-    test_exception_handling Ironment::AccessDenied, "ironment: Permission denied", :untrust, ".envrc"
-    test_exception_handling Ironment::NoEntity, "ironment: No such file or directory", :untrust, ".envrc"
-    test_exception_handling Ironment::IsDirectory, "ironment: Is a directory", :untrust, ".envrc"
+    test_exception_handling Ironment::AccessDenied, "ironment: .envrc: Permission denied", :untrust, ".envrc"
+    test_exception_handling Ironment::NoEntity, "ironment: .envrc: No such file or directory", :untrust, ".envrc"
+    test_exception_handling Ironment::IsDirectory, "ironment: .envrc: Is a directory", :untrust, ".envrc"
   end
 end

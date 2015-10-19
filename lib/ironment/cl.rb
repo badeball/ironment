@@ -9,14 +9,14 @@ class Ironment
         define_method method_name do |*args|
           begin
             send new_name, *args
-          rescue Ironment::AccessDenied
-            @err.puts "ironment: Permission denied"
-          rescue Ironment::NoEntity
-            @err.puts "ironment: No such file or directory"
-          rescue Ironment::IsDirectory
-            @err.puts "ironment: Is a directory"
-          rescue Ironment::MalformedRuncom
-            @err.puts "ironment: Malformed runcom"
+          rescue Ironment::AccessDenied => e
+            @err.puts "ironment: #{e.message}: Permission denied"
+          rescue Ironment::NoEntity=> e
+            @err.puts "ironment: #{e.message}: No such file or directory"
+          rescue Ironment::IsDirectory=> e
+            @err.puts "ironment: #{e.message}: Is a directory"
+          rescue Ironment::MalformedRuncom=> e
+            @err.puts "ironment: #{e.message}: Malformed runcom"
           end
         end
       end
