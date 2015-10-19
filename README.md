@@ -43,6 +43,11 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 0.0.6
+
+* Correct an issue where an unreadable, untrusted runcom would cause a stacktrace.
+* Errors now contain the file subject (eg. *ironment: foo: No such file or directory*).
+
 ### 0.0.5
 
 * `iron exec` now handles EACCES, ENOENT & EISDIR like `iron trust` and `iron untrust` does.
