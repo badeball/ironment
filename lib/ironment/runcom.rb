@@ -24,11 +24,11 @@ class Ironment
       @file == other.file
     end
 
+    private
+
     def content
       @content ||= File.read(file)
     end
-
-    private
 
     def read_pairs
       Hash[*content.split(/\n/).reject { |line|
