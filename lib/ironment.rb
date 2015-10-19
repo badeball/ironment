@@ -8,7 +8,12 @@ require "ironment/runcom"
 require "ironment/truster"
 
 class Ironment
-  class MalformedRuncom < StandardError; end
+  class IronmentError < StandardError; end
+
+  class MalformedRuncom < IronmentError; end
+  class AccessDenied < IronmentError; end
+  class NoEntity < IronmentError; end
+  class IsDirectory < IronmentError; end
 
   class << self
     attr_writer :runcom
