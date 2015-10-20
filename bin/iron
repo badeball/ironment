@@ -4,6 +4,11 @@ require "commander/import"
 require "ironment"
 require "ironment/version"
 
+Signal.trap("INT") do
+  puts "Aborted"
+  exit 1
+end
+
 program :name, "Ironment"
 program :version, Ironment::VERSION
 program :description, "Environment populator & command wrapper utility."
