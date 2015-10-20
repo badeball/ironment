@@ -43,6 +43,10 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 1.0.1
+
+* Update dependencies and unlock patch version numbers.
+
 ### 1.0.0
 
 * SIGINT is now handled by the executable.
