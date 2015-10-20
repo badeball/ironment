@@ -43,6 +43,10 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 1.0.0
+
+* SIGINT is now handled by the executable.
+
 ### 0.0.6
 
 * Correct an issue where an unreadable, untrusted runcom would cause a stacktrace.
