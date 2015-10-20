@@ -43,6 +43,10 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 1.0.2
+
+* Correct a regression of the view feature of the executable.
+
 ### 1.0.1
 
 * Update dependencies and unlock patch version numbers.
