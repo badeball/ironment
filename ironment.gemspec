@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files       = Dir["LICENSE", "README.md", "lib/**/*"]
   s.test_files  = Dir["test/**/*.rb"]
 
-  s.add_dependency("commander", "4.3.4")
+  s.add_dependency("commander", "4.3.5")
 
   s.add_development_dependency("codeclimate-test-reporter", "0.4.7")
   s.add_development_dependency("fakefs", "0.6.7")
