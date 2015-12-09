@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     ironment (1.0.0)
-      commander (= 4.3.5)
+      commander (~> 4.3.5)
 
 GEM
   remote: https://rubygems.org/
