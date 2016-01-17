@@ -24,13 +24,13 @@ class Ironment
       @file == other.file
     end
 
-    private
-
     def content
       @content ||= File.read(file)
     rescue Errno::EACCES
       raise AccessDenied, file
     end
+
+    private
 
     def read_pairs
       Hash[*content.split(/\n/).reject { |line|
