@@ -16,8 +16,6 @@ Gem::Specification.new do |s|
   s.files       = Dir["LICENSE", "README.md", "lib/**/*"]
   s.test_files  = Dir["test/**/*.rb"]
 
-  s.add_dependency("commander", ">= 4.3.5")
-
   s.add_development_dependency("simplecov", "0.16.1")
   s.add_development_dependency("fakefs", "0.6.7")
   s.add_development_dependency("guard", "2.13.0")

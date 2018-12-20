@@ -1,6 +1,8 @@
 require "ironment/cl"
 require "ironment/config"
 require "ironment/finder"
+require "ironment/optparse/help_texts"
+require "ironment/optparse"
 require "ironment/populator"
 require "ironment/cl/prompter"
 require "ironment/executor"

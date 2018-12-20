@@ -1,44 +1,10 @@
 #!/usr/bin/env ruby
 
-require "commander/import"
 require "ironment"
-require "ironment/version"
 
 Signal.trap("INT") do
   puts "Aborted"
   exit 1
 end
 
-program :name, "Ironment"
-program :version, Ironment::VERSION
-program :description, "Environment populator & command wrapper utility."
-
-command :exec do |c|
-  c.syntax = "exec [files..]"
-  c.description = "create a new environment (default)"
-  c.action do |args|
-    Ironment::CL.new.exec_with_environment *args
-  end
-end
-
-command :trust do |c|
-  c.syntax = "trust [files..]"
-  c.description = "add a file as trusted"
-  c.action do |args|
-    args.each do |file|
-      Ironment::CL.new.trust file
-    end
-  end
-end
-
-command :untrust do |c|
-  c.syntax = "untrust [files..]"
-  c.description = "remove a file as trusted"
-  c.action do |args|
-    args.each do |file|
-      Ironment::CL.new.untrust file
-    end
-  end
-end
-
-default_command :exec
+exit Ironment::Optparse.new(argv: ARGV).parse || 0
