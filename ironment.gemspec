@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency("commander", ">= 4.3.5")
 
-  s.add_development_dependency("codeclimate-test-reporter", "0.4.7")
   s.add_development_dependency("fakefs", "0.6.7")
   s.add_development_dependency("guard", "2.13.0")
   s.add_development_dependency("guard-minitest", "2.4.4")
