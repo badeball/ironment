@@ -16,6 +16,12 @@ rvm:
   - 2.2.2
   - 2.2.3
   - 2.2.4
-before_install: gem update bundler # To use 1.10.0 or later. See: https://github.com/bundler/bundler/issues/3558
+before_install:
+  - gem update bundler # To use 1.10.0 or later. See: https://github.com/bundler/bundler/issues/3558
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rake test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
