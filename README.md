@@ -43,6 +43,10 @@ $ yaourt -S ruby-ironment
 
 ## Changelog
 
+### 1.1.0
+
+* Remove runtime dependency on [commander][commander].
+
 ### 1.0.2
 
 * Correct a regression of the view feature of the executable.
@@ -84,3 +88,5 @@ $ yaourt -S ruby-ironment
 * Initial version. Contains basic support for wrapping commands and populating
   the environment by recursively reading the directory structure upwards and
   looking for .envrc files.
+
+[commander]: https://github.com/commander-rb/commander
