@@ -8,6 +8,7 @@ require "ironment/cl/prompter"
 require "ironment/executor"
 require "ironment/runcom"
 require "ironment/truster"
+require "ironment/version"
 
 class Ironment
   class IronmentError < StandardError; end
